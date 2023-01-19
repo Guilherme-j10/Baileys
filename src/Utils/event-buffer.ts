@@ -133,7 +133,6 @@ export const makeEventBuffer = (logger: Logger): BaileysBufferableEventEmitter =
 		emit<T extends BaileysEvent>(event: BaileysEvent, evData: BaileysEventMap[T]) {
 			if(buffersInProgress && BUFFERABLE_EVENT_SET.has(event)) {
 				append(data, historyCache, event as any, evData, logger)
-				return true
 			}
 
 			return ev.emit('event', { [event]: evData })
